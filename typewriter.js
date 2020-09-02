@@ -10,7 +10,7 @@ let soundKeystroke3 = new Audio("./sounds/keystroke-3.mp3");
 let soundKeystroke4 = new Audio("./sounds/keystroke-4.mp3");
 let soundLineBreak = new Audio("./sounds/line-break.mp3");
 
-initTypewriter();
+document.body.addEventListener("click", initTypewriter, true);
 
 //Get all .typewriter paragraphs
 function initTypewriter() {
@@ -39,6 +39,7 @@ function runTypewriter(element) {
 //Take 1 letter at a time and display it
 function runTypewriterEffect(element, elementText) {
   element.textContent = elementText.substring(0, 0);
+
   for (let i = 0; i <= elementText.length; i++) {
     setTimeout(() => {
       element.textContent = elementText.substring(0, i);
@@ -48,7 +49,8 @@ function runTypewriterEffect(element, elementText) {
         soundLineBreak.currentTime = 0;
         soundLineBreak.play();
       }
-    }, i * globalSpeed * randomNumber(0.8, 1));
+      console.log(i * globalSpeed * randomNumber(0.9, 1));
+    }, i * globalSpeed * randomNumber(0.5, 0.6));
   }
 }
 
@@ -75,7 +77,7 @@ function playSound() {
 }
 
 //Random modifier for keystrokes
-//Use between 0.8 and 1
+//use between 0.4 and 0.7
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
