@@ -1,6 +1,7 @@
 "use strict";
 
 let globalSpeed = 300; //Use between 300-800
+let textElements;
 
 //SOUNDS
 let soundKeystroke1 = new Audio("./sounds/keystroke-1.mp3");
@@ -30,7 +31,7 @@ function loopThroughTexts() {
 
 //Get text of element and play the effect
 function runTypewriter(element) {
-  text = element.textContent;
+  let text = element.textContent;
   runTypewriterEffect(element, text);
   element.style.visibility = "initial";
 }
